@@ -3,6 +3,8 @@ package com.xiaoping.twosum;
 
 import com.xiaoping.util.Log;
 
+import java.util.HashMap;
+
 /**
  * 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那两个整数，并返回它们的数组下标。
  *
@@ -29,6 +31,8 @@ import com.xiaoping.util.Log;
  * 链接：https://leetcode-cn.com/problems/two-sum
  */
 public class Solution {
+
+    // mine
     public int[] twoSum(int[] nums, int target) {
         int size = nums.length;
         for (int i = 0; i < size; i++) {
@@ -38,6 +42,19 @@ public class Solution {
                     return new int[]{i, j};
                 }
             }
+        }
+        return null;
+    }
+
+    // other
+    public int[] twoSum1(int[] nums, int target) {
+        HashMap<Integer, Integer> dict = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            int diff = target - nums[i];
+            if (dict.containsKey(diff)) {
+                return new int[] {i, dict.get(diff)};
+            }
+            dict.put(nums[i], i);
         }
         return null;
     }
