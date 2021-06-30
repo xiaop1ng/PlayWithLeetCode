@@ -32,7 +32,8 @@ public class Solution {
     public int[] twoSum(int[] nums, int target) {
         int size = nums.length;
         for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+            for (int j = i; j < size; j++) {
+                if (i==j) continue;
                 if (nums[i] + nums[j] == target) {
                     return new int[]{i, j};
                 }
@@ -42,8 +43,8 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        int[] nums = {2,7,11,15};
-        int target = 9;
+        int[] nums = {3,2,4};
+        int target = 6;
         int[] ret = new Solution().twoSum(nums, target);
         Log.info(ret);
     }
